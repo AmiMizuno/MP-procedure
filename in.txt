@@ -1,4 +1,4 @@
-1 Bereza 25
-2 Kust March
-1 Dub 90
-2 Ryabina August
+1 Bereza Steppe 25
+2 Kust Forest March
+1 Dub Forest 90
+2 Ryabina Tundra August

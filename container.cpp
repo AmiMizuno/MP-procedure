@@ -17,20 +17,17 @@ void init(container &c)//инициализация контейнера(обнуляется количество элементо
 
 void clear(container &c)//удаление объектов и установка в начальное состояние
 {
-	container::element* cur = c.head;
-	container::element* prev;
-	while(cur != NULL && cur->p != NULL)
+	while (c.head != NULL)
 	{
-		delete cur->p;
-		prev = cur;
-		cur = cur->next;
-		delete prev;
+		container::element* tmp = c.head->next;
+		delete c.head->p;
+		delete c.head;
+		c.head = tmp;
 	}
 	c.head = NULL;
 	c.tail = NULL;
 	c.len = 0;
 }
-
 
 void in(container &c, std::ifstream &ifst)//ввод элементов в контейнер
 {
@@ -39,11 +36,11 @@ void in(container &c, std::ifstream &ifst)//ввод элементов в контейнер
 		plant* p = in(ifst);
 		if (p == NULL)
 		{
-			
 			break;
 		}
 		container::element* elem = new container::element;
 		elem->p = p;
+		elem->next = NULL;
 		if (c.head == NULL)
 			c.head = c.tail = elem;
 		else
@@ -53,10 +50,6 @@ void in(container &c, std::ifstream &ifst)//ввод элементов в контейнер
 		}
 		c.len++;
 	}
-	container::element* sh = new container::element;
-			sh->p = NULL;
-			sh->next = NULL;
-			c.tail->next = sh;
 }
 
 
@@ -64,14 +57,13 @@ void out(container &c, std::ofstream &ofst)//вывод содержимого контейнера в зада
 {
 	ofst << "Container contains " << c.len << " elements." << std::endl;
 	container::element* current = c.head;
-	int i = 0;
-	while(current != NULL && current->p != NULL)
+	while (current != NULL)
 	{
-		ofst << ++i << ": ";
 		out(*current->p, ofst);
 		current = current->next;
 	}
 
 }
+
 
 }

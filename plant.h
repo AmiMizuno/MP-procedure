@@ -12,7 +12,9 @@ namespace flora
 struct plant
 	{
 		std::string name;
-		enum key { TREE, BUSH };
+		enum zone { TUNDRA, DESERT, STEPPE, FOREST };
+		zone habitat;
+		enum key { TREE, BUSH};
 		key k;
 		union {
 			tree t;
