@@ -8,6 +8,10 @@ void in(tree &t, std::ifstream &ifst);
 void out(bush &b, std::ofstream &ofst);
 void out(tree &t, std::ofstream &ofst);
 
+bool compare(plant *a, plant *b)
+{
+	return consonant_count(*a) < consonant_count(*b);
+}
 
 plant* in(std::ifstream &ifst)
 {

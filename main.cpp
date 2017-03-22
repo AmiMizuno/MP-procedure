@@ -8,6 +8,7 @@ using namespace std;
 namespace flora {
 	void init(container &c);
 	void clear(container &c);
+	void sort(container &c);
 	void in(container &c, ifstream &ifst);
 	void out(container &c, ofstream &ofst);
 }
@@ -27,6 +28,7 @@ int main(int argc, char* argv[])
 	init(c);
 	in(c, ifst);
 	ofst << "Filled container. " << endl;
+	sort(c);
 	out(c, ofst);
 	clear(c);
 	ofst << "Empty container. " << endl;
