@@ -1,4 +1,5 @@
 #include "tree.h"
+#include <string>
 namespace flora
 {
 
@@ -10,7 +11,7 @@ void in(tree &t, std::ifstream &ifst)
 
 void out(tree &t, std::ofstream &ofst)
 {
-	ofst << "This is a tree: age = " << t.age << " years";
+	ofst << "This is a tree: age = " << t.age << " years. ";
 }
 
 }

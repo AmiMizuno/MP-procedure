@@ -24,7 +24,6 @@ void init(container &c);
 void clear(container &c);
 void in(container &c, std::ifstream &ifst);
 void out(container &c, std::ofstream &ofst);
-
 }
 
 #endif // CONTAINER_H

@@ -53,7 +53,7 @@ void out(bush &b, std::ofstream &ofst)
 		case bush::DECEMBER : month = "December"; break;
 		default : break;
 	}
-	ofst << "This is a bush: flowering month = " << month;
+	ofst << "This is a bush: flowering month = " << month << ". ";
 }
 
 }

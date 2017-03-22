@@ -1,12 +1,16 @@
 #include "plant.h"
+#include <cctype>
 
 namespace flora
 {
 
 void in(bush &b, std::ifstream &ifst);
 void in(tree &t, std::ifstream &ifst);
+void in(flower &f, std::ifstream &ifst);
 void out(bush &b, std::ofstream &ofst);
 void out(tree &t, std::ofstream &ofst);
+void out(flower &f, std::ofstream &ofst);
+
 
 bool compare(plant *a, plant *b)
 {
@@ -15,7 +19,7 @@ bool compare(plant *a, plant *b)
 
 plant* in(std::ifstream &ifst)
 {
-	plant *p = NULL;
+	plant *p;
 	int k;
 	ifst >> k;
 	std::string name;
@@ -34,6 +38,12 @@ plant* in(std::ifstream &ifst)
 			p->k = plant::BUSH;
 			in(p->b, ifst);
 			break;
+		case 3:
+			p = new plant;
+			p->name = name;
+			p->k = plant::FLOWER;
+			in(p->f, ifst);
+			break;
 		default:
 			return 0;
 	}
@@ -50,6 +60,9 @@ void out(plant &p, std::ofstream &ofst)
 			break;
 		case plant::BUSH :
 			out(p.b, ofst);
+			break;
+		case plant::FLOWER :
+			out(p.f, ofst);
 			break;
 		default:
 			ofst << "Incorrect plant!" << std::endl;
@@ -75,5 +88,6 @@ int consonant_count(plant &p)
 	return consonsnts;
 }
 
-
 }
+
+

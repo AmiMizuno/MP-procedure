@@ -31,6 +31,7 @@ void clear(container &c)//удаление объектов и установка в начальное состояние
 	c.len = 0;
 }
 
+
 void sort(container &c)
 {
 	container::element* a = c.head;
@@ -66,6 +67,7 @@ void sort(container &c)
 		a = a->next;
 	}
 }
+
 
 void in(container &c, std::ifstream &ifst)//ввод элементов в контейнер
 {
