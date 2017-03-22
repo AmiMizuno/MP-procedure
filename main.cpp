@@ -10,6 +10,7 @@ namespace flora {
 	void clear(container &c);
 	void in(container &c, ifstream &ifst);
 	void out(container &c, ofstream &ofst);
+	void outTrees(container &c, ofstream &ofst);
 }
 using namespace flora;
 
@@ -28,6 +29,8 @@ int main(int argc, char* argv[])
 	in(c, ifst);
 	ofst << "Filled container. " << endl;
 	out(c, ofst);
+	ofst << endl;
+	outTrees(c, ofst);
 	clear(c);
 	ofst << "Empty container. " << endl;
 	out(c, ofst);
