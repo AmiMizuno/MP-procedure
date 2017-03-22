@@ -20,10 +20,10 @@ int main(int argc, char* argv[])
 		"Waited: command infile outfile" << endl;
 		exit(1);
 	}
-	ifstream ifst(argv[1]);//вызов виртуальной таблицы
+	ifstream ifst(argv[1]);
 	ofstream ofst(argv[2]);
 	cout << "Start" << endl;
-	container c;//создание контейнера
+	container c;
 	init(c);
 	in(c, ifst);
 	ofst << "Filled container. " << endl;
