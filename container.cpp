@@ -6,6 +6,7 @@ namespace flora
 {
 
 plant* in(std::ifstream &ifst);
+int consonant_count(plant &p);
 void out(plant &p, std::ofstream &ofst);
 
 void init(container &c)//инициализация контейнера(обнуляется количество элементов)
@@ -17,14 +18,12 @@ void init(container &c)//инициализация контейнера(обнуляется количество элементо
 
 void clear(container &c)//удаление объектов и установка в начальное состояние
 {
-	container::element* cur = c.head;
-	container::element* prev;
-	while(cur != NULL && cur->p != NULL)
+	while (c.head != NULL)
 	{
-		delete cur->p;
-		prev = cur;
-		cur = cur->next;
-		delete prev;
+		container::element* tmp = c.head->next;
+		delete c.head->p;
+		delete c.head;
+		c.head = tmp;
 	}
 	c.head = NULL;
 	c.tail = NULL;
@@ -53,10 +52,7 @@ void in(container &c, std::ifstream &ifst)//ввод элементов в контейнер
 		}
 		c.len++;
 	}
-	container::element* sh = new container::element;
-			sh->p = NULL;
-			sh->next = NULL;
-			c.tail->next = sh;
+
 }
 
 

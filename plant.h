@@ -22,7 +22,7 @@ struct plant
 
 plant *in(std::ifstream &ifst);
 void out(plant &p, std::ofstream &ofst);
-
+int consonant_count(plant &p);
 }
 
 #endif // PLANT_H

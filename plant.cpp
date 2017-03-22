@@ -8,6 +8,7 @@ void in(tree &t, std::ifstream &ifst);
 void out(bush &b, std::ofstream &ofst);
 void out(tree &t, std::ofstream &ofst);
 
+
 plant* in(std::ifstream &ifst)
 {
 	plant *p = NULL;
@@ -50,7 +51,24 @@ void out(plant &p, std::ofstream &ofst)
 			ofst << "Incorrect plant!" << std::endl;
 			break;
 	}
-	ofst << ", name = " << p.name << std::endl;
+	ofst << "Name = " << p.name << 
+			", consonant count = " << consonant_count(p) << std::endl;
+}
+
+int consonant_count(plant &p)
+{
+	int consonsnts = 0;
+	for (int i = 0, length = p.name.size(); i < length; i++)
+	{
+		char c = p.name[i];
+		if (!isalpha(c))
+			continue;
+		c = tolower(c);
+		if (c == 'a' || c == 'i' || c == 'u' || c == 'o' || c == 'e')
+			continue;
+		consonsnts++;
+	}
+	return consonsnts;
 }
 
 
