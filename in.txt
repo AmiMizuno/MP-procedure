@@ -1,7 +1,6 @@
-1 Bereza 25
-3 Pion Home
-2 Kust March
-1 Dub 90
-3 Rosa Wild
-2 Ryabina August
-3 Romashka Garden
+1 Bereza Steppe 25
+2 Kust Forest March
+1 Dub Forest 90
+2 Ryabina Tundra August
+3 Romashka Tundra Garden
+

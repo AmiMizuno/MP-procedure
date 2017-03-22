@@ -69,6 +69,7 @@ void sort(container &c)
 }
 
 
+
 void in(container &c, std::ifstream &ifst)//ввод элементов в контейнер
 {
 	while (!ifst.eof())
@@ -105,5 +106,6 @@ void out(container &c, std::ofstream &ofst)//вывод содержимого контейнера в зада
 	}
 
 }
+
 
 }
