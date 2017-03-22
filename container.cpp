@@ -108,4 +108,17 @@ void out(container &c, std::ofstream &ofst)//вывод содержимого контейнера в зада
 }
 
 
+void outTrees(container &c, std::ofstream &ofst)
+{
+	ofst << "Container contains " << c.len << " elements." << std::endl;
+	ofst << "Output only trees." << std::endl;
+	container::element* current = c.head;
+	while (current != NULL)
+	{
+		if (current->p->k == plant::TREE)
+			out(*current->p, ofst);
+		current = current->next;
+	}
+}
+
 }
