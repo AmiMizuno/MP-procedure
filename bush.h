@@ -3,8 +3,7 @@
 
 #include <fstream>
 
-namespace flora
-{
+
 
 struct bush
 {
@@ -15,6 +14,6 @@ struct bush
 void in(bush &b, std::ifstream &ifst);
 void out(bush &b, std::ofstream &ofst);
 
-}
+
 
 #endif // BUSH_H

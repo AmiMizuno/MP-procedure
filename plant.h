@@ -7,8 +7,7 @@
 #include "bush.h"
 #include "flower.h"
 
-namespace flora
-{
+
 
 struct plant
 	{
@@ -29,6 +28,5 @@ void out(plant &p, std::ofstream &ofst);
 int consonant_count(plant &p);
 
 
-}
 
 #endif // PLANT_H

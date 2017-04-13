@@ -3,8 +3,7 @@
 
 #include <fstream>
 
-namespace flora
-{
+
 
 struct tree
 {
@@ -14,6 +13,6 @@ struct tree
 void in(tree &t, std::ifstream &ifst);
 void out(tree &t, std::ofstream &ofst);
 
-}
+
 
 #endif // TREE_H

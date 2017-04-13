@@ -3,8 +3,7 @@
 
 #include <fstream>
 
-namespace flora
-{
+
 
 struct flower
 {
@@ -15,7 +14,7 @@ struct flower
 void in(flower &f, std::ifstream &ifst);
 void out(flower &f, std::ofstream &ofst);
 
-}
+
 
 
 #endif // FLOWER_H

@@ -1,8 +1,10 @@
 #include "plant.h"
 #include <cctype>
+#include <iostream>
+#include <sstream>
+#include <cstdlib>
 
-namespace flora
-{
+
 
 void in(bush &b, std::ifstream &ifst);
 void in(tree &t, std::ifstream &ifst);
@@ -10,7 +12,6 @@ void in(flower &f, std::ifstream &ifst);
 void out(bush &b, std::ofstream &ofst);
 void out(tree &t, std::ofstream &ofst);
 void out(flower &f, std::ofstream &ofst);
-
 
 bool compare(plant *a, plant *b)
 {
@@ -20,12 +21,47 @@ bool compare(plant *a, plant *b)
 plant* in(std::ifstream &ifst)
 {
 	plant *p;
+	std::string test;
+	ifst >> test; //reading test string
+	if (ifst.fail())
+	{
+		return 0; //end of file
+	}
+
+	//checking that this string is valid number
+	for (int i = 0; i < test.length(); i++)
+	{
+		if (!isdigit(test[i])) //contains only digits
+		{
+			std::cerr << "Wrong plant key" << std::endl;
+			exit(-1);
+		}
+	}
+
+	//convrting to integer
 	int k;
-	ifst >> k;
+	std::istringstream strin(test);
+	strin >> k;
+	if (strin.fail())
+	{
+		std::cerr << "Wrong plant key" << std::endl;
+		exit(-1);
+	}
+
 	std::string name;
 	ifst >> name;
+	if (ifst.fail())
+	{
+		std::cerr << "Wrong plant name" << std::endl;
+		exit(-1);
+	}
 	std::string habitat_in;
 	ifst >> habitat_in;
+	if (ifst.fail())
+	{
+		std::cerr << "Wrong plant habitat" << std::endl;
+		exit(-1);
+	}
 
 	p = new plant;
 	if (habitat_in == "Tundra")
@@ -39,7 +75,8 @@ plant* in(std::ifstream &ifst)
 	else
 	{
 		delete p;
-		return 0;
+		std::cerr << "Wrong plant habitat" << std::endl;
+		exit(-1);
 	}
 	p->name = name;
 
@@ -54,14 +91,13 @@ plant* in(std::ifstream &ifst)
 			in(p->b, ifst);
 			break;
 		case 3:
-			p = new plant;
-			p->name = name;
 			p->k = plant::FLOWER;
 			in(p->f, ifst);
 			break;
 		default:
 			delete p;
-			return 0;
+			std::cerr << "Wrong plant key" << std::endl;
+			exit(-1);
 	}
 	return p;
 }
@@ -81,7 +117,7 @@ void out(plant &p, std::ofstream &ofst)
 			out(p.f, ofst);
 			break;
 		default:
-			ofst << "Incorrect plant!" << std::endl;
+			std::cerr << "Incorrect plant!" << std::endl;
 			return;
 	}
 
@@ -101,7 +137,7 @@ void out(plant &p, std::ofstream &ofst)
 			habitat_out = "Forest";
 			break;
 		default:
-			ofst << "Incorrect habitat!" << std::endl;
+			std::cerr << "Incorrect habitat!" << std::endl;
 			return;
 	}
 
@@ -125,6 +161,5 @@ int consonant_count(plant &p)
 	return consonsnts;
 }
 
-}
 
 

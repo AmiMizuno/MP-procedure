@@ -1,18 +1,29 @@
 #include "flower.h"
-#include <string>
-namespace flora
-{
+#include <iostream>
+#include <cstdlib>
+
+
 
 void in(flower &f, std::ifstream &ifst)
 {
 	std::string growing_in;
 	ifst >> growing_in;
+	if (ifst.fail())
+	{
+		std::cerr << "Wrong flower growing place" << std::endl;
+		exit(-1);
+	}
 	if (growing_in == "Home")
 		f.growing = flower::HOME;
 	else if (growing_in == "Garden")
 		f.growing = flower::GARDEN;
 	else if (growing_in == "Wild")
 		f.growing = flower::WILD;
+	else
+	{
+		std::cerr << "Wrong flower growing place" << std::endl;
+		exit(-1);
+	}
 }
 
 
@@ -29,4 +40,4 @@ void out(flower &f, std::ofstream &ofst)
 	ofst << "This is a flower: grows " << growing_out << ". ";
 }
 
-}
+

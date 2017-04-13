@@ -2,22 +2,21 @@
 #include "plant.h"
 #include <iostream>
 
-namespace flora
-{
+
 
 plant* in(std::ifstream &ifst);
 bool compare(plant *a, plant *b);
 int consonant_count(plant &p);
 void out(plant &p, std::ofstream &ofst);
 
-void init(container &c)//инициализация контейнера(обнуляется количество элементов)
+void init(container &c)
 {
 	c.head = NULL;
 	clear(c);
 }
 
 
-void clear(container &c)//удаление объектов и установка в начальное состояние
+void clear(container &c)
 {
 	while (c.head != NULL)
 	{
@@ -30,7 +29,6 @@ void clear(container &c)//удаление объектов и установка в начальное состояние
 	c.tail = NULL;
 	c.len = 0;
 }
-
 
 void sort(container &c)
 {
@@ -69,8 +67,7 @@ void sort(container &c)
 }
 
 
-
-void in(container &c, std::ifstream &ifst)//ввод элементов в контейнер
+void in(container &c, std::ifstream &ifst)
 {
 	while (!ifst.eof())
 	{
@@ -91,11 +88,10 @@ void in(container &c, std::ifstream &ifst)//ввод элементов в контейнер
 		}
 		c.len++;
 	}
-
 }
 
 
-void out(container &c, std::ofstream &ofst)//вывод содержимого контейнера в заданный выходной поток
+void out(container &c, std::ofstream &ofst)
 {
 	ofst << "Container contains " << c.len << " elements." << std::endl;
 	container::element* current = c.head;
@@ -106,7 +102,6 @@ void out(container &c, std::ofstream &ofst)//вывод содержимого контейнера в зада
 	}
 
 }
-
 
 void outTrees(container &c, std::ofstream &ofst)
 {
@@ -121,4 +116,4 @@ void outTrees(container &c, std::ofstream &ofst)
 	}
 }
 
-}
+
