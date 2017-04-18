@@ -1,0 +1,2 @@
+Container contains 1 elements.
+This is a tree: age = 25 years. Name = Bereza, habitat = Steppe, consonant count = 3

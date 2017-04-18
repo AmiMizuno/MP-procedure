@@ -1,0 +1,4 @@
+Container contains 7 elements.
+Output only trees.
+This is a tree: age = 25 years. Name = Bereza, habitat = Steppe, consonant count = 3
+This is a tree: age = 90 years. Name = Dub, habitat = Forest, consonant count = 2

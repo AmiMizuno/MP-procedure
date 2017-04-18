@@ -1,0 +1,4 @@
+Container contains 3 elements.
+This is a tree: age = 25 years. Name = Bereza, habitat = Steppe, consonant count = 3
+This is a flower: grows at home. Name = Pion, habitat = Tundra, consonant count = 2
+This is a tree: age = 9 years. Name = Iva, habitat = Forest, consonant count = 1

@@ -1,0 +1,12 @@
+Container contains 7 elements.
+This is a flower: grows in garden. Name = Romashka, habitat = Tundra, consonant count = 5
+This is a bush: flowering month = August. Name = Ryabina, habitat = Tundra, consonant count = 4
+This is a tree: age = 25 years. Name = Bereza, habitat = Steppe, consonant count = 3
+This is a bush: flowering month = March. Name = Kust, habitat = Forest, consonant count = 3
+This is a flower: grows in the wild. Name = Rosa, habitat = Tundra, consonant count = 2
+This is a flower: grows at home. Name = Pion, habitat = Tundra, consonant count = 2
+This is a tree: age = 90 years. Name = Dub, habitat = Forest, consonant count = 2
+Container contains 7 elements.
+Output only trees.
+This is a tree: age = 25 years. Name = Bereza, habitat = Steppe, consonant count = 3
+This is a tree: age = 90 years. Name = Dub, habitat = Forest, consonant count = 2
