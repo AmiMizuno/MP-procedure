@@ -1,26 +1,22 @@
-#include "container.h"
+#include "Container.h"
 #include "plant.h"
 #include <iostream>
 
+Plant* in(std::ifstream &ifst);
+bool compare(Plant *a, Plant *b);
+int consonant_count(Plant &p);
+void out(Plant &p, std::ofstream &ofst);
 
-
-plant* in(std::ifstream &ifst);
-bool compare(plant *a, plant *b);
-int consonant_count(plant &p);
-void out(plant &p, std::ofstream &ofst);
-
-void init(container &c)
+void init(Container &c)
 {
 	c.head = NULL;
 	clear(c);
 }
 
-
-void clear(container &c)
+void clear(Container &c)
 {
-	while (c.head != NULL)
-	{
-		container::element* tmp = c.head->next;
+    while (c.head != NULL) {
+        Container::element* tmp = c.head->next;
 		delete c.head->p;
 		delete c.head;
 		c.head = tmp;
@@ -30,20 +26,18 @@ void clear(container &c)
 	c.len = 0;
 }
 
-void sort(container &c)
+void sort(Container &c)
 {
-	container::element* a = c.head;
-	container::element* prevA = NULL;
+    Container::element* a = c.head;
+    Container::element* prevA = NULL;
 	while (a != NULL)
 	{
-		container::element* b = a->next;
-		container::element* prevB = a;
-		while (b != NULL)
-		{
-			if (compare(a->p, b->p))
-			{
-				container::element *tmp = a;
-				container::element *tmp_next = a->next;
+        Container::element* b = a->next;
+        Container::element* prevB = a;
+        while (b != NULL) {
+            if (compare(a->p, b->p)) {
+                Container::element *tmp = a;
+                Container::element *tmp_next = a->next;
 				if (!prevA)
 					c.head = b;
 				else
@@ -66,23 +60,19 @@ void sort(container &c)
 	}
 }
 
-
-void in(container &c, std::ifstream &ifst)
+void in(Container &c, std::ifstream &ifst)
 {
-	while (!ifst.eof())
-	{
-		plant* p = in(ifst);
-		if (p == NULL)
-		{
+    while (!ifst.eof()) {
+        Plant* p = in(ifst);
+        if (p == NULL) {
 			break;
 		}
-		container::element* elem = new container::element;
+        Container::element* elem = new Container::element;
 		elem->p = p;
 		elem->next = NULL;
 		if (c.head == NULL)
 			c.head = c.tail = elem;
-		else
-		{
+        else {
 			c.tail->next = elem;
 			c.tail = c.tail->next;
 		}
@@ -90,30 +80,25 @@ void in(container &c, std::ifstream &ifst)
 	}
 }
 
-
-void out(container &c, std::ofstream &ofst)
+void out(Container &c, std::ofstream &ofst)
 {
-	ofst << "Container contains " << c.len << " elements." << std::endl;
-	container::element* current = c.head;
-	while (current != NULL)
-	{
+    ofst << "Container contains " << c.len << " elements." << std::endl;
+    Container::element* current = c.head;
+	while (current != NULL){
 		out(*current->p, ofst);
 		current = current->next;
 	}
 
 }
 
-void outTrees(container &c, std::ofstream &ofst)
+void out_trees(Container &c, std::ofstream &ofst)
 {
-	ofst << "Container contains " << c.len << " elements." << std::endl;
+    ofst << "Container contains " << c.len << " elements." << std::endl;
 	ofst << "Output only trees." << std::endl;
-	container::element* current = c.head;
-	while (current != NULL)
-	{
-		if (current->p->k == plant::TREE)
+    Container::element* current = c.head;
+    while (current != NULL) {
+        if (current->p->k == Plant::TREE)
 			out(*current->p, ofst);
 		current = current->next;
 	}
 }
-
-

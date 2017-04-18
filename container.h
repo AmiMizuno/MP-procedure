@@ -1,17 +1,14 @@
 #ifndef CONTAINER_H
 #define CONTAINER_H
-
 #include <fstream>
 #include "plant.h"
 
-
-
-struct container
+struct Container
 {
 
 	struct element
 	{
-		plant* p;
+        Plant* p;
 		element* next;
 	};
 	element* head, * tail;
@@ -19,12 +16,10 @@ struct container
 
 };
 
-void init(container &c);
-void clear(container &c);
-void in(container &c, std::ifstream &ifst);
-void out(container &c, std::ofstream &ofst);
-void outTrees(container &c, std::ofstream &ofst);
-
-
+void init(Container &c);
+void clear(Container &c);
+void in(Container &c, std::ifstream &ifst);
+void out(Container &c, std::ofstream &ofst);
+void out_trees(Container &c, std::ofstream &ofst);
 
 #endif // CONTAINER_H
