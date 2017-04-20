@@ -3,12 +3,8 @@
 #include <cstdlib>
 #include "Container.h"
 using namespace std;
-void init(Container &c);
-void clear(Container &c);
-void sort(Container &c);
-void in(Container &c, ifstream &ifst);
-void out(Container &c, ofstream &ofst);
-void outTrees(Container &c, ofstream &ofst);
+
+
 
 int main(int argc, char* argv[])
 {
@@ -28,7 +24,9 @@ int main(int argc, char* argv[])
 	in(c, ifst);
 	ofstream ofst(argv[2]);
     ofst << "Filled container. " << endl;
-	sort(c);
+    out(c, ofst);
+    ofst << "Sorted container. " << endl;
+    sort(c);
 	out(c, ofst);
 	ofst << endl;
     out_trees(c, ofst);

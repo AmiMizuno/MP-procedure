@@ -7,7 +7,7 @@ struct Bush
 	enum month { JANUARY, FEBRUARY, MARCH, APRIL, MAY, JUNE, JULY, AUGUST, SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER };
 	month flowering;
 };
-void in(Bush &b, std::ifstream &ifst);
-void out(Bush &b, std::ofstream &ofst);
+void in_b(Bush &b, std::ifstream &ifst);
+void out_b(Bush &b, std::ofstream &ofst);
 
 #endif // BUSH_H

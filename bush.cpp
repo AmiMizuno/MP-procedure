@@ -2,7 +2,7 @@
 #include <iostream>
 #include <cstdlib>
 
-void in(Bush &b, std::ifstream &ifst)
+void in_b(Bush &b, std::ifstream &ifst)
 {
 	std::string month;
 	ifst >> month;
@@ -40,7 +40,7 @@ void in(Bush &b, std::ifstream &ifst)
 	}
 }
 
-void out(Bush &b, std::ofstream &ofst)
+void out_b(Bush &b, std::ofstream &ofst)
 {
 	std::string month;
     switch (b.flowering) {

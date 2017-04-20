@@ -7,7 +7,7 @@ struct Flower
 	enum area { HOME, GARDEN, WILD };
 	area growing;
 };
-void in(Flower &f, std::ifstream &ifst);
-void out(Flower &f, std::ofstream &ofst);
+void in_f(Flower &f, std::ifstream &ifst);
+void out_f(Flower &f, std::ofstream &ofst);
 
 #endif // FLOWER_H

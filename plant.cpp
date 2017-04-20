@@ -4,10 +4,10 @@
 #include <sstream>
 #include <cstdlib>
 
-void in(Bush &b, std::ifstream &ifst);
-void in(Tree &t, std::ifstream &ifst);
-void in(Flower &f, std::ifstream &ifst);
-void out(Bush &b, std::ofstream &ofst);
+void in_b(Bush &b, std::ifstream &ifst);
+void in_t(Tree &t, std::ifstream &ifst);
+void in_f(Flower &f, std::ifstream &ifst);
+void out_b(Bush &b, std::ofstream &ofst);
 void out(Tree &t, std::ofstream &ofst);
 void out(Flower &f, std::ofstream &ofst);
 
@@ -67,15 +67,15 @@ Plant* in(std::ifstream &ifst)
     switch (k) {
 		case 1:
             p->k = Plant::TREE;
-			in(p->t, ifst);
+            in_t(p->t, ifst);
 			break;
 		case 2:
             p->k = Plant::BUSH;
-			in(p->b, ifst);
+            in_b(p->b, ifst);
 			break;
 		case 3:
             p->k = Plant::FLOWER;
-			in(p->f, ifst);
+            in_f(p->f, ifst);
 			break;
         default:
 			delete p;
@@ -89,13 +89,13 @@ void out(Plant &p, std::ofstream &ofst)
 {
     switch (p.k) {
         case Plant::TREE :
-			out(p.t, ofst);
+            out_t(p.t, ofst);
 			break;
         case Plant::BUSH :
-			out(p.b, ofst);
+            out_b(p.b, ofst);
 			break;
         case Plant::FLOWER :
-			out(p.f, ofst);
+            out_f(p.f, ofst);
 			break;
 		default:
             std::cerr << "Incorrect plant!" << std::endl;

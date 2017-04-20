@@ -21,5 +21,6 @@ void clear(Container &c);
 void in(Container &c, std::ifstream &ifst);
 void out(Container &c, std::ofstream &ofst);
 void out_trees(Container &c, std::ofstream &ofst);
+void sort(Container &c);
 
 #endif // CONTAINER_H
