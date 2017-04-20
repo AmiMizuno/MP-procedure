@@ -4,13 +4,6 @@
 #include <sstream>
 #include <cstdlib>
 
-void in_b(Bush &b, std::ifstream &ifst);
-void in_t(Tree &t, std::ifstream &ifst);
-void in_f(Flower &f, std::ifstream &ifst);
-void out_b(Bush &b, std::ofstream &ofst);
-void out(Tree &t, std::ofstream &ofst);
-void out(Flower &f, std::ofstream &ofst);
-
 bool compare(Plant *a, Plant *b)
 {
 	return consonant_count(*a) < consonant_count(*b);
