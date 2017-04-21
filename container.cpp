@@ -2,6 +2,7 @@
 #include "plant.h"
 #include <iostream>
 
+using namespace std;
 Plant* in(std::ifstream &ifst);
 bool compare(Plant *a, Plant *b);
 int consonant_count(Plant &p);
@@ -97,8 +98,31 @@ void out_trees(Container &c, std::ofstream &ofst)
 	ofst << "Output only trees." << std::endl;
     Container::element* current = c.head;
     while (current != NULL) {
-        if (current->p->k == Plant::TREE)
+		if (current->p->k == TREE)
 			out(*current->p, ofst);
 		current = current->next;
 	}
 }
+void check_infile(std::ifstream &ifst)
+{
+	if (!ifst) {
+		cout << "Failed to open input file" << std::endl;
+		exit(-1);
+	}
+}
+void check_outfile(std::ofstream &ofst)
+{
+	if (!ofst) {
+		cout << "Failed to open output file" << std::endl;
+		exit(-1);
+	}
+}
+/*std::string check_data(std::ifstream &ifst, std::string str)
+{
+	ifst >> str;
+	if (ifst.fail()) {
+		cout << "Error while reading! Wrong data in file" << std::endl;   // выносить все проверки в отдельную функцию нецелесообразно
+		exit(-1);														 // потому что все равно пришлось бы писать отдельные ф-ии для
+	}																	//bush, flower, tree, или же нарушилась бы структура программы
+	return str;
+}*/

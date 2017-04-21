@@ -4,10 +4,10 @@
 #include <fstream>
 
 
-
+enum area { HOME, GARDEN, WILD };
 struct flower
 {
-	enum area { HOME, GARDEN, WILD };
+
 	area growing;
 };
 

@@ -1,10 +1,9 @@
 #ifndef BUSH_H
 #define BUSH_H
 #include <fstream>
-
+enum month { JANUARY, FEBRUARY, MARCH, APRIL, MAY, JUNE, JULY, AUGUST, SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER }; //вынесла перечисляемый тип в глобальные переменные
 struct Bush
 {
-	enum month { JANUARY, FEBRUARY, MARCH, APRIL, MAY, JUNE, JULY, AUGUST, SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER };
 	month flowering;
 };
 void in_b(Bush &b, std::ifstream &ifst);

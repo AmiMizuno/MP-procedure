@@ -7,14 +7,12 @@
 #include "bush.h"
 #include "flower.h"
 
-
-
+enum zone { TUNDRA, DESERT, STEPPE, FOREST };
+enum key { TREE, BUSH, FLOWER };
 struct plant
 	{
 		std::string name;
-		enum zone { TUNDRA, DESERT, STEPPE, FOREST };
 		zone habitat;
-		enum key { TREE, BUSH, FLOWER };
 		key k;
 		union {
 			tree t;

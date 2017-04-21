@@ -4,6 +4,13 @@
 #include <sstream>
 #include <cstdlib>
 
+void in(Bush &b, std::ifstream &ifst);
+void in(Tree &t, std::ifstream &ifst);
+void in(Flower &f, std::ifstream &ifst);
+void out(Bush &b, std::ofstream &ofst);
+void out(Tree &t, std::ofstream &ofst);
+void out(Flower &f, std::ofstream &ofst);
+
 bool compare(Plant *a, Plant *b)
 {
 	return consonant_count(*a) < consonant_count(*b);
@@ -44,13 +51,13 @@ Plant* in(std::ifstream &ifst)
 	}
     p = new Plant;
 	if (habitat_in == "Tundra")
-        p->habitat = Plant::TUNDRA;
+		p->habitat = TUNDRA;
 	else if (habitat_in == "Desert")
-        p->habitat = Plant::DESERT;
+		p->habitat = DESERT;
 	else if (habitat_in == "Steppe")
-        p->habitat = Plant::STEPPE;
+		p->habitat = STEPPE;
 	else if (habitat_in == "Forest")
-        p->habitat = Plant::FOREST;
+		p->habitat = FOREST;
 	else{
 		delete p;
         std::cerr << "Wrong plant habitat" << std::endl;
@@ -59,16 +66,16 @@ Plant* in(std::ifstream &ifst)
 	p->name = name;
     switch (k) {
 		case 1:
-            p->k = Plant::TREE;
-            in_t(p->t, ifst);
+			p->k = TREE;
+			in_t(p->t, ifst);
 			break;
 		case 2:
-            p->k = Plant::BUSH;
-            in_b(p->b, ifst);
+			p->k = BUSH;
+			in_b(p->b, ifst);
 			break;
 		case 3:
-            p->k = Plant::FLOWER;
-            in_f(p->f, ifst);
+			p->k = FLOWER;
+			in_f(p->f, ifst);
 			break;
         default:
 			delete p;
@@ -81,14 +88,14 @@ Plant* in(std::ifstream &ifst)
 void out(Plant &p, std::ofstream &ofst)
 {
     switch (p.k) {
-        case Plant::TREE :
-            out_t(p.t, ofst);
+		case TREE :
+			out_t(p.t, ofst);
 			break;
-        case Plant::BUSH :
-            out_b(p.b, ofst);
+		case BUSH :
+			out_b(p.b, ofst);
 			break;
-        case Plant::FLOWER :
-            out_f(p.f, ofst);
+		case FLOWER :
+			out_f(p.f, ofst);
 			break;
 		default:
             std::cerr << "Incorrect plant!" << std::endl;
@@ -96,16 +103,16 @@ void out(Plant &p, std::ofstream &ofst)
 	}
 	std::string habitat_out = "";
 	switch (p.habitat){
-        case Plant::TUNDRA:
+		case TUNDRA:
 			habitat_out = "Tundra";
 			break;
-        case Plant::DESERT:
+		case DESERT:
 			habitat_out = "Desert";
 			break;
-        case Plant::STEPPE:
+		case STEPPE:
 			habitat_out = "Steppe";
 			break;
-        case Plant::FOREST:
+		case FOREST:
 			habitat_out = "Forest";
 			break;
 		default:

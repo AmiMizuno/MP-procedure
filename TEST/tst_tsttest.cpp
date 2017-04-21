@@ -27,10 +27,12 @@ private Q_SLOTS:
     void testZero();
     void testAlone();
     void testOnlyTree();
+	//void TestConsonant_count_data();
     void TestConsonant_count();
     void TestConsonant_count2();
     void TestConsonant_count3();
     void TestConsonant_count4();
+	//void TestCompare_data();
     void TestCompare();
 //     void testOut_data();
     void testIn2();
@@ -350,7 +352,26 @@ void TstTest::testOnlyTree()
     expected.close();
 }
 
+/*void TstTest::TestConsonant_count_data()
+{
+	QTest::addColumn<string>("name");
+	QTest::addColumn<int>("expected");
 
+	QTest::newRow("compare01") << 'Beresa' << 3;
+	QTest::newRow("compare02") << 'Aea' << 1;
+	QTest::newRow("compare03") << 'kaktus' << 4;
+	QTest::newRow("compare04") << 'qwrtypsdfghklzxcvbnm' << 20;       //альтернатива последующим тестам
+}
+
+void TstTest::TestConsonant_count()
+{
+	QFETCH(string, name);
+	QFETCH(int, expected);
+    plant p;
+	p.name= name;
+    int act=consonant_count(p);
+	QCOMPARE(act, expected);
+ }*/
 
 //тесты функции cогласных
 //разного регистра
@@ -389,6 +410,30 @@ void TstTest::TestConsonant_count4()
     int exp=20;
     QCOMPARE(act, exp);
     }
+/*void TstTest::TestCompare_data()
+{
+	QTest::addColumn<string>("name1");
+	QTest::addColumn<string>("name2");
+	QTest::addColumn<bool>("exp");
+	QTest::newRow("compare01") << 'beresa' << 'romashka' << true;
+	QTest::newRow("compare02") << 'romashka' << 'beresa' << false;
+	QTest::newRow("compare03") << 'romashka' << 'romashka' << false;  //альтернатива TestCompare, позволяет сделать тесты независимыми друг от друга
+}
+void TstTest::TestCompare()
+{
+	QFETCH(string, name1);
+	QFETCH(string, name2);
+	QFETCH(bool, exp);
+    plant *a;
+    a=new plant;
+	a->name=name1;
+    plant *b;
+    b=new plant;
+	b->name=name2;
+    bool act= compare(a,b);
+	QCOMPARE(act, exp);
+
+}*/
 //тест сравнения
 void TstTest::TestCompare()
 {

@@ -31,13 +31,13 @@ plant* readP(std::ifstream &ifst)
 
 	p = new plant;
 	if (habitat_in == "Tundra")
-		p->habitat = plant::TUNDRA;
+		p->habitat = TUNDRA;
 	else if (habitat_in == "Desert")
-		p->habitat = plant::DESERT;
+		p->habitat = DESERT;
 	else if (habitat_in == "Steppe")
-		p->habitat = plant::STEPPE;
+		p->habitat = STEPPE;
 	else if (habitat_in == "Forest")
-		p->habitat = plant::FOREST;
+		p->habitat = FOREST;
 	else
 	{
 		delete p;
@@ -48,17 +48,17 @@ plant* readP(std::ifstream &ifst)
 	switch (k)
 	{
 		case 1:
-			p->k = plant::TREE;
+			p->k = TREE;
             in_t(p->t, ifst);
 			break;
 		case 2:
-			p->k = plant::BUSH;
+			p->k = BUSH;
             in_b(p->b, ifst);
 			break;
 		case 3:
 			p = new plant;
 			p->name = name;
-			p->k = plant::FLOWER;
+			p->k = FLOWER;
             in_f(p->f, ifst);
 			break;
 		default:
@@ -73,13 +73,13 @@ void outP(plant &p, std::ofstream &ofst)
 {
 	switch (p.k)
 	{
-		case plant::TREE :
+		case TREE :
             out_t(p.t, ofst);
 			break;
-		case plant::BUSH :
+		case BUSH :
             out_b(p.b, ofst);
 			break;
-		case plant::FLOWER :
+		case FLOWER :
             out_f(p.f, ofst);
 			break;
 		default:
@@ -90,16 +90,16 @@ void outP(plant &p, std::ofstream &ofst)
 	std::string habitat_out = "";
 	switch (p.habitat)
 	{
-		case plant::TUNDRA:
+		case TUNDRA:
 			habitat_out = "Tundra";
 			break;
-		case plant::DESERT:
+		case DESERT:
 			habitat_out = "Desert";
 			break;
-		case plant::STEPPE:
+		case STEPPE:
 			habitat_out = "Steppe";
 			break;
-		case plant::FOREST:
+		case FOREST:
 			habitat_out = "Forest";
 			break;
 		default:
