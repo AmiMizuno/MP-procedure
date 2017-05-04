@@ -1,16 +1,12 @@
 #include "bush.h"
-#include <iostream>
-#include <cstdlib>
+#include <string>
+
+
 
 void in(bush &b, std::ifstream &ifst)
 {
 	std::string month;
 	ifst >> month;
-	if (ifst.fail())
-	{
-		std::cerr << "Wrong bush month" << std::endl;
-		exit(-1);
-	}
 	if (month == "January")
 		b.flowering = bush::JANUARY;
 	else if (month == "February")
@@ -35,12 +31,8 @@ void in(bush &b, std::ifstream &ifst)
 		b.flowering = bush::NOVEMBER;
 	else if (month == "December")
 		b.flowering = bush::DECEMBER;
-	else
-	{
-		std::cerr << "Wrong bush month" << std::endl;
-		exit(-1);
-	}
 }
+
 
 void out(bush &b, std::ofstream &ofst)
 {
@@ -61,5 +53,7 @@ void out(bush &b, std::ofstream &ofst)
 		case bush::DECEMBER : month = "December"; break;
 		default : break;
 	}
-	ofst << "This is a bush: flowering month = " << month << ". ";
+	ofst << "This is a bush: flowering month = " << month;
 }
+
+

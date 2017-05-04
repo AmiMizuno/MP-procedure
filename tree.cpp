@@ -2,17 +2,18 @@
 #include <iostream>
 #include <cstdlib>
 
-void in_t(Tree &t, std::ifstream &ifst)
+void in(tree &t, std::ifstream &ifst)
 {
 	ifst >> t.age;
-	if (ifst.fail() || t.age < 0){
+	if (ifst.fail() || t.age < 0)
+	{
 		std::cerr << "Wrong tree age" << std::endl;
 		exit(-1);
 	}
 }
 
-void out_t(Tree &t, std::ofstream &ofst)
+
+void out(tree &t, std::ofstream &ofst)
 {
 	ofst << "This is a tree: age = " << t.age << " years. ";
 }
-

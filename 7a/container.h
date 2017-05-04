@@ -4,6 +4,7 @@
 #include <fstream>
 #include "plant.h"
 
+
 struct container
 {
 
@@ -21,6 +22,7 @@ void init(container &c);
 void clear(container &c);
 void in(container &c, std::ifstream &ifst);
 void out(container &c, std::ofstream &ofst);
-void outTrees(container &c, std::ofstream &ofst);
+
+
 
 #endif // CONTAINER_H

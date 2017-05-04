@@ -1,125 +1,149 @@
-#include "Plant.h"
+#include "plant.h"
 #include <cctype>
 #include <iostream>
 #include <sstream>
 #include <cstdlib>
 
-bool compare(Plant *a, Plant *b)
+void in(bush &b, std::ifstream &ifst);
+void in(tree &t, std::ifstream &ifst);
+void in(flower &f, std::ifstream &ifst);
+void out(bush &b, std::ofstream &ofst);
+void out(tree &t, std::ofstream &ofst);
+void out(flower &f, std::ofstream &ofst);
+
+bool compare(plant *a, plant *b)
 {
 	return consonant_count(*a) < consonant_count(*b);
 }
 
-Plant* in(std::ifstream &ifst)
+plant* in(std::ifstream &ifst)
 {
-    Plant *p;
+	plant *p;
 	std::string test;
     ifst >> test;
-    if (ifst.fail()) {
-        return 0;
+	if (ifst.fail())
+	{
+		return 0; //end of file
 	}
-    for (int i = 0; i < test.length(); i++) {
-        if (!isdigit(test[i])) {
-            std::cerr << "Wrong plant key" << std::endl;
+	for (int i = 0; i < test.length(); i++)
+	{
+        if (!isdigit(test[i]))
+		{
+			std::cerr << "Wrong plant key" << std::endl;
 			exit(-1);
 		}
 	}
-    int k;
+	int k;
 	std::istringstream strin(test);
 	strin >> k;
-    if (strin.fail()) {
-        std::cerr << "Wrong plant key" << std::endl;
+	if (strin.fail())
+	{
+		std::cerr << "Wrong plant key" << std::endl;
 		exit(-1);
 	}
+
 	std::string name;
 	ifst >> name;
-    if (ifst.fail()) {
-        std::cerr << "Wrong plant name" << std::endl;
+	if (ifst.fail())
+	{
+		std::cerr << "Wrong plant name" << std::endl;
 		exit(-1);
 	}
 	std::string habitat_in;
 	ifst >> habitat_in;
-    if (ifst.fail()) {
-        std::cerr << "Wrong plant habitat" << std::endl;
+	if (ifst.fail())
+	{
+		std::cerr << "Wrong plant habitat" << std::endl;
 		exit(-1);
 	}
-    p = new Plant;
+
+	p = new plant;
 	if (habitat_in == "Tundra")
-        p->habitat = Plant::TUNDRA;
+		p->habitat = plant::TUNDRA;
 	else if (habitat_in == "Desert")
-        p->habitat = Plant::DESERT;
+		p->habitat = plant::DESERT;
 	else if (habitat_in == "Steppe")
-        p->habitat = Plant::STEPPE;
+		p->habitat = plant::STEPPE;
 	else if (habitat_in == "Forest")
-        p->habitat = Plant::FOREST;
-	else{
+		p->habitat = plant::FOREST;
+	else
+	{
 		delete p;
-        std::cerr << "Wrong plant habitat" << std::endl;
+		std::cerr << "Wrong plant habitat" << std::endl;
 		exit(-1);
 	}
 	p->name = name;
-    switch (k) {
+
+	switch (k)
+	{
 		case 1:
-            p->k = Plant::TREE;
-            in_t(p->t, ifst);
+			p->k = plant::TREE;
+			in(p->t, ifst);
 			break;
 		case 2:
-            p->k = Plant::BUSH;
-            in_b(p->b, ifst);
+			p->k = plant::BUSH;
+			in(p->b, ifst);
 			break;
 		case 3:
-            p->k = Plant::FLOWER;
-            in_f(p->f, ifst);
+			p->k = plant::FLOWER;
+			in(p->f, ifst);
 			break;
-        default:
+		default:
 			delete p;
-            std::cerr << "Wrong plant key" << std::endl;
+			std::cerr << "Wrong plant key" << std::endl;
 			exit(-1);
 	}
 	return p;
 }
 
-void out(Plant &p, std::ofstream &ofst)
+
+void out(plant &p, std::ofstream &ofst)
 {
-    switch (p.k) {
-        case Plant::TREE :
-            out_t(p.t, ofst);
+	switch (p.k)
+	{
+		case plant::TREE :
+			out(p.t, ofst);
 			break;
-        case Plant::BUSH :
-            out_b(p.b, ofst);
+		case plant::BUSH :
+			out(p.b, ofst);
 			break;
-        case Plant::FLOWER :
-            out_f(p.f, ofst);
+		case plant::FLOWER :
+			out(p.f, ofst);
 			break;
 		default:
-            std::cerr << "Incorrect plant!" << std::endl;
+			std::cerr << "Incorrect plant!" << std::endl;
 			return;
 	}
+
 	std::string habitat_out = "";
-	switch (p.habitat){
-        case Plant::TUNDRA:
+	switch (p.habitat)
+	{
+		case plant::TUNDRA:
 			habitat_out = "Tundra";
 			break;
-        case Plant::DESERT:
+		case plant::DESERT:
 			habitat_out = "Desert";
 			break;
-        case Plant::STEPPE:
+		case plant::STEPPE:
 			habitat_out = "Steppe";
 			break;
-        case Plant::FOREST:
+		case plant::FOREST:
 			habitat_out = "Forest";
 			break;
 		default:
 			std::cerr << "Incorrect habitat!" << std::endl;
 			return;
 	}
+
 	ofst << "Name = " << p.name << ", habitat = " << habitat_out <<
 			", consonant count = " << consonant_count(p) << std::endl;
 }
 
-int consonant_count(Plant &p)
+int consonant_count(plant &p)
 {
 	int consonsnts = 0;
-    for (int i = 0, length = p.name.size(); i < length; i++) {
+	for (int i = 0, length = p.name.size(); i < length; i++)
+	{
 		char c = p.name[i];
 		if (!isalpha(c))
 			continue;

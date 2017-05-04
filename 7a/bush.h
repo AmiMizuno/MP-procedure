@@ -3,6 +3,8 @@
 
 #include <fstream>
 
+
+
 struct bush
 {
 	enum month { JANUARY, FEBRUARY, MARCH, APRIL, MAY, JUNE, JULY, AUGUST, SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER };
@@ -11,5 +13,7 @@ struct bush
 
 void in(bush &b, std::ifstream &ifst);
 void out(bush &b, std::ofstream &ofst);
+
+
 
 #endif // BUSH_H

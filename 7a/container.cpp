@@ -2,9 +2,9 @@
 #include "plant.h"
 #include <iostream>
 
+
+
 plant* in(std::ifstream &ifst);
-bool compare(plant *a, plant *b);
-int consonant_count(plant &p);
 void out(plant &p, std::ofstream &ofst);
 
 void init(container &c)//инициализаци€ контейнера(обнул€етс€ количество элементов)
@@ -13,54 +13,21 @@ void init(container &c)//инициализаци€ контейнера(обнул€етс€ количество элементо
 	clear(c);
 }
 
+
 void clear(container &c)//удаление объектов и установка в начальное состо€ние
 {
-	while (c.head != NULL)
+	container::element* cur = c.head;
+	container::element* prev;
+	while(cur != NULL && cur->p != NULL)
 	{
-		container::element* tmp = c.head->next;
-		delete c.head->p;
-		delete c.head;
-		c.head = tmp;
+		delete cur->p;
+		prev = cur;
+		cur = cur->next;
+		delete prev;
 	}
 	c.head = NULL;
 	c.tail = NULL;
 	c.len = 0;
-}
-
-void sort(container &c)
-{
-	container::element* a = c.head;
-	container::element* prevA = NULL;
-	while (a != NULL)
-	{
-		container::element* b = a->next;
-		container::element* prevB = a;
-		while (b != NULL)
-		{
-			if (compare(a->p, b->p))
-			{
-				container::element *tmp = a;
-				container::element *tmp_next = a->next;
-				if (!prevA)
-					c.head = b;
-				else
-					prevA->next = b;
-				prevB->next = a;
-				a->next = b->next;
-				if (tmp_next != b)
-					b->next = tmp_next;
-				else
-					b->next = a;
-				a = b;
-				b = tmp;
-			}
-			c.tail = b;
-			prevB = b;
-			b = b->next;
-		}
-		prevA = a;
-		a = a->next;
-	}
 }
 
 
@@ -75,7 +42,6 @@ void in(container &c, std::ifstream &ifst)//ввод элементов в контейнер
 		}
 		container::element* elem = new container::element;
 		elem->p = p;
-		elem->next = NULL;
 		if (c.head == NULL)
 			c.head = c.tail = elem;
 		else
@@ -92,7 +58,7 @@ void out(container &c, std::ofstream &ofst)//вывод содержимого контейнера в зада
 {
 	ofst << "Container contains " << c.len << " elements." << std::endl;
 	container::element* current = c.head;
-	while (current != NULL)
+	while(current != NULL && current->p != NULL)
 	{
 		out(*current->p, ofst);
 		current = current->next;
@@ -100,19 +66,6 @@ void out(container &c, std::ofstream &ofst)//вывод содержимого контейнера в зада
 
 }
 
-void outTrees(container &c, std::ofstream &ofst)
-{
-	ofst << "Container contains " << c.len << " elements." << std::endl;
-	ofst << "Output only trees." << std::endl;
-	container::element* current = c.head;
-	while (current != NULL)
-	{
-		if (current->p->k == plant::TREE)
-			out(*current->p, ofst);
-		current = current->next;
-	}
-}
-//набор условных операторов, осуществл€ющих анализ типа объекта
 void multimethod(container &c, std::ofstream &ofst)
 {
 	ofst << "Multimethod" << std::endl;
@@ -132,9 +85,6 @@ void multimethod(container &c, std::ofstream &ofst)
 						case plant::BUSH:
 							ofst << "Tree and Bush" << std::endl;
 							break;
-						case plant::FLOWER:
-							ofst << "Tree and Flower" << std::endl;
-							break;
 						default:
 							ofst << "Unknown type" << std::endl;
 							break;
@@ -147,25 +97,6 @@ void multimethod(container &c, std::ofstream &ofst)
 							break;
 						case plant::BUSH:
 							ofst << "Bush and Bush" << std::endl;
-							break;
-						case plant::FLOWER:
-							ofst << "Bush and Flower" << std::endl;
-							break;
-						default:
-							ofst << "Unknown type" << std::endl;
-							break;
-					}
-					break;
-				case plant::FLOWER:
-					switch (j->p->k) {
-						case plant::TREE:
-							ofst << "Flower and Tree" << std::endl;
-							break;
-						case plant::BUSH:
-							ofst << "Flower and Bush" << std::endl;
-							break;
-						case plant::FLOWER:
-							ofst << "Flower and Flower" << std::endl;
 							break;
 						default:
 							ofst << "Unknown type" << std::endl;
@@ -183,3 +114,5 @@ void multimethod(container &c, std::ofstream &ofst)
 		i  = i->next;
 	}
 }
+
+

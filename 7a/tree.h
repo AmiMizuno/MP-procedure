@@ -3,6 +3,8 @@
 
 #include <fstream>
 
+
+
 struct tree
 {
 	long int age;
@@ -10,5 +12,7 @@ struct tree
 
 void in(tree &t, std::ifstream &ifst);
 void out(tree &t, std::ofstream &ofst);
+
+
 
 #endif // TREE_H
