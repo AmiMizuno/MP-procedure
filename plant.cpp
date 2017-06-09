@@ -4,26 +4,26 @@
 #include <sstream>
 #include <cstdlib>
 
-void in(bush &b, std::ifstream &ifst);
-void in(tree &t, std::ifstream &ifst);
-void in(flower &f, std::ifstream &ifst);
-void out(bush &b, std::ofstream &ofst);
-void out(tree &t, std::ofstream &ofst);
-void out(flower &f, std::ofstream &ofst);
+void InBush(bush &b, std::ifstream &ifst);
+void InTree(tree &t, std::ifstream &ifst);
+void InFlower(flower &f, std::ifstream &ifst);
+void OutBush(bush &b, std::ofstream &ofst);
+void OutTree(tree &t, std::ofstream &ofst);
+void OutFlower(flower &f, std::ofstream &ofst);
 
 bool compare(plant *a, plant *b)
 {
 	return consonant_count(*a) < consonant_count(*b);
 }
 
-plant* in(std::ifstream &ifst)
+plant* In(std::ifstream &ifst)
 {
 	plant *p;
 	std::string test;
     ifst >> test;
 	if (ifst.fail())
 	{
-		return 0; //end of file
+		return 0;
 	}
 	for (int i = 0; i < test.length(); i++)
 	{
@@ -78,15 +78,15 @@ plant* in(std::ifstream &ifst)
 	{
 		case 1:
 			p->k = plant::TREE;
-			in(p->t, ifst);
+			InTree(p->t, ifst);
 			break;
 		case 2:
 			p->k = plant::BUSH;
-			in(p->b, ifst);
+			InBush(p->b, ifst);
 			break;
 		case 3:
 			p->k = plant::FLOWER;
-			in(p->f, ifst);
+			InFlower(p->f, ifst);
 			break;
 		default:
 			delete p;
@@ -97,18 +97,18 @@ plant* in(std::ifstream &ifst)
 }
 
 
-void out(plant &p, std::ofstream &ofst)
+void Out(plant &p, std::ofstream &ofst)
 {
 	switch (p.k)
 	{
 		case plant::TREE :
-			out(p.t, ofst);
+			OutTree(p.t, ofst);
 			break;
 		case plant::BUSH :
-			out(p.b, ofst);
+			OutBush(p.b, ofst);
 			break;
 		case plant::FLOWER :
-			out(p.f, ofst);
+			OutFlower(p.f, ofst);
 			break;
 		default:
 			std::cerr << "Incorrect plant!" << std::endl;
@@ -136,10 +136,10 @@ void out(plant &p, std::ofstream &ofst)
 	}
 
 	ofst << "Name = " << p.name << ", habitat = " << habitat_out <<
-			", consonant count = " << consonant_count(p) << std::endl;
+			", consonant count = " << ConsonantCount(p) << std::endl;
 }
 
-int consonant_count(plant &p)
+int ConsonantCount(plant &p)
 {
 	int consonsnts = 0;
 	for (int i = 0, length = p.name.size(); i < length; i++)

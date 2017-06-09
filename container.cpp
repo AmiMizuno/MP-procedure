@@ -2,18 +2,18 @@
 #include "plant.h"
 #include <iostream>
 
-plant* in(std::ifstream &ifst);
-bool compare(plant *a, plant *b);
-int consonant_count(plant &p);
-void out(plant &p, std::ofstream &ofst);
+plant* In(std::ifstream &ifst);
+bool Compare(plant *a, plant *b);
+int ConsonantCount(plant &p);
+void Out(plant &p, std::ofstream &ofst);
 
-void init(container &c)//инициализаци€ контейнера(обнул€етс€ количество элементов)
+void Init(container &c)
 {
 	c.head = NULL;
-	clear(c);
+	Clear(c);
 }
 
-void clear(container &c)//удаление объектов и установка в начальное состо€ние
+void Clear(container &c)
 {
 	while (c.head != NULL)
 	{
@@ -27,7 +27,7 @@ void clear(container &c)//удаление объектов и установка в начальное состо€ние
 	c.len = 0;
 }
 
-void sort(container &c)
+void Sort(container &c)
 {
 	container::element* a = c.head;
 	container::element* prevA = NULL;
@@ -37,7 +37,7 @@ void sort(container &c)
 		container::element* prevB = a;
 		while (b != NULL)
 		{
-			if (compare(a->p, b->p))
+			if (Compare(a->p, b->p))
 			{
 				container::element *tmp = a;
 				container::element *tmp_next = a->next;
@@ -64,11 +64,11 @@ void sort(container &c)
 }
 
 
-void in(container &c, std::ifstream &ifst)//ввод элементов в контейнер
+void InContainer(container &c, std::ifstream &ifst)
 {
 	while (!ifst.eof())
 	{
-		plant* p = in(ifst);
+		plant* p = In(ifst);
 		if (p == NULL)
 		{
 			break;
@@ -88,19 +88,19 @@ void in(container &c, std::ifstream &ifst)//ввод элементов в контейнер
 }
 
 
-void out(container &c, std::ofstream &ofst)//вывод содержимого контейнера в заданный выходной поток
+void OutContainer(container &c, std::ofstream &ofst)
 {
 	ofst << "Container contains " << c.len << " elements." << std::endl;
 	container::element* current = c.head;
 	while (current != NULL)
 	{
-		out(*current->p, ofst);
+		Out(*current->p, ofst);
 		current = current->next;
 	}
 
 }
 
-void outTrees(container &c, std::ofstream &ofst)
+void OutTrees(container &c, std::ofstream &ofst)
 {
 	ofst << "Container contains " << c.len << " elements." << std::endl;
 	ofst << "Output only trees." << std::endl;
@@ -108,12 +108,12 @@ void outTrees(container &c, std::ofstream &ofst)
 	while (current != NULL)
 	{
 		if (current->p->k == plant::TREE)
-			out(*current->p, ofst);
+			Out(*current->p, ofst);
 		current = current->next;
 	}
 }
-//набор условных операторов, осуществл€ющих анализ типа объекта
-void multimethod(container &c, std::ofstream &ofst)
+
+void Multimethod(container &c, std::ofstream &ofst)
 {
 	ofst << "Multimethod" << std::endl;
 	container::element* i = c.head;
@@ -176,8 +176,8 @@ void multimethod(container &c, std::ofstream &ofst)
 					ofst << "Unknown type" << std::endl;
 					break;
 			}
-			out(*(i->p), ofst);
-			out(*(j->p), ofst);
+			Out(*(i->p), ofst);
+			Out(*(j->p), ofst);
 			j = j->next;
 		}
 		i  = i->next;

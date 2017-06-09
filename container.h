@@ -17,10 +17,10 @@ struct container
 
 };
 
-void init(container &c);
-void clear(container &c);
-void in(container &c, std::ifstream &ifst);
-void out(container &c, std::ofstream &ofst);
-void outTrees(container &c, std::ofstream &ofst);
+void Init(container &c);
+void Clear(container &c);
+void InContainer(container &c, std::ifstream &ifst);
+void OutContainer(container &c, std::ofstream &ofst);
+void OutTrees(container &c, std::ofstream &ofst);
 
 #endif // CONTAINER_H

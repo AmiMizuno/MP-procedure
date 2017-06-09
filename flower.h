@@ -9,7 +9,7 @@ struct flower
 	area growing;
 };
 
-void in(flower &f, std::ifstream &ifst);
-void out(flower &f, std::ofstream &ofst);
+void InFlower(flower &f, std::ifstream &ifst);
+void OutFlower(flower &f, std::ofstream &ofst);
 
 #endif // FLOWER_H

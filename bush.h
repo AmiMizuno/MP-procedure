@@ -9,7 +9,7 @@ struct bush
 	month flowering;
 };
 
-void in(bush &b, std::ifstream &ifst);
-void out(bush &b, std::ofstream &ofst);
+void InBush(bush &b, std::ifstream &ifst);
+void OutBush(bush &b, std::ofstream &ofst);
 
 #endif // BUSH_H

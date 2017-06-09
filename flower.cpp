@@ -2,7 +2,7 @@
 #include <iostream>
 #include <cstdlib>
 
-void in(flower &f, std::ifstream &ifst)
+void InFlower(flower &f, std::ifstream &ifst)
 {
 	std::string growing_in;
 	ifst >> growing_in;
@@ -24,7 +24,7 @@ void in(flower &f, std::ifstream &ifst)
 	}
 }
 
-void out(flower &f, std::ofstream &ofst)
+void OutFlower(flower &f, std::ofstream &ofst)
 {
 	std::string growing_out;
 	switch (f.growing)

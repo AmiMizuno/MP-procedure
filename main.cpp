@@ -5,15 +5,15 @@
 
 using namespace std;
 
-void init(container &c);
-void clear(container &c);
-void sort(container &c);
-void in(container &c, ifstream &ifst);
-void out(container &c, ofstream &ofst);
-void outTrees(container &c, ofstream &ofst);
-void multimethod(container &c, ofstream &ofst);
+void Init(container &c);
+void Clear(container &c);
+void Sort(container &c);
+void InContainer(container &c, ifstream &ifst);
+void OutContainer(container &c, ofstream &ofst);
+void OutTrees(container &c, ofstream &ofst);
+void Multimethod(container &c, ofstream &ofst);
 
-int main(int argc, char* argv[])
+int Main(int argc, char* argv[])
 {
 	if(argc != 3)	{
 		cout << "incorrect command line! "
@@ -28,17 +28,19 @@ int main(int argc, char* argv[])
 	}
 	cout << "Start" << endl;
 	container c;
-	init(c);
-	in(c, ifst);
+	Init(c);
+	InContainer(c, ifst);
 	ofstream ofst(argv[2]);
 	ofst << "Filled container. " << endl;
-	sort(c);
-	multimethod(c, ofst);
+	Sort(c);
+	Multimethod(c, ofst);
 	ofst << endl;
-	outTrees(c, ofst);
-	clear(c);
+	OutTrees(c, ofst);
+	Clear(c);
 	ofst << "Empty container. " << endl;
-	out(c, ofst);
+	OutContainer(c, ofst);
+	ifst.close();
+ 	ofst.close();
 	cout << "Stop" << endl;
 	return 0;
 }
